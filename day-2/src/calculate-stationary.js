@@ -1,19 +1,22 @@
-const {
-  calculateSurfaceAreaOfCuboid,
-  calculateSmallestAreaOfCuboid
-} = require("../utilities/math-utils");
 const { extractDimensions } = require("./dimension-extractor");
+const {
+  surfaceAreaOfCuboid,
+  areaOfSmallestFaceOfCuboid
+} = require("../utilities/math-utils");
 
+const calculateAreaOfGiftWrapper = (dimension) => {
+  const areaOfSlack = areaOfSmallestFaceOfCuboid(dimension);
+  const surfaceAreaOfGift = surfaceAreaOfCuboid(dimension);
 
-const calculatePaperToBeOrdered = (giftSizes) => {
-  const dimensions = extractDimensions(giftSizes);
+  return surfaceAreaOfGift + areaOfSlack;
+}
+
+const calculateTotalWrapperRequired = (giftBoxSizes) => {
+  const dimensions = extractDimensions(giftBoxSizes);
 
   return dimensions.reduce((paperRequired, dimension) => {
-    const slackArea = calculateSmallestAreaOfCuboid(dimension);
-    const surfaceAreaOfGift = calculateSurfaceAreaOfCuboid(dimension);
-
-    return paperRequired + surfaceAreaOfGift + slackArea;
+    return paperRequired + calculateAreaOfGiftWrapper(dimension);
   }, 0);
 }
 
-exports.calculatePaperToBeOrdered = calculatePaperToBeOrdered;
+module.exports = { calculateTotalWrapperRequired, calculateAreaOfGiftWrapper };

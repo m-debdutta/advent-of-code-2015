@@ -2,20 +2,24 @@ const sortAscending = ([...list]) => {
   return list.sort((a, b) => a - b);
 }
 
-const area = (length, breadth) => {
+const areaOfRectangle = (length, breadth) => {
   return length * breadth;
 }
 
-const calculateSmallestAreaOfCuboid = ([...dimension]) => {
+const areaOfSmallestFaceOfCuboid = ([...dimension]) => {
   const [smallestSide, secondSmallestSide] = sortAscending(dimension);
 
-  return area(smallestSide, secondSmallestSide);
+  return areaOfRectangle(smallestSide, secondSmallestSide);
 }
 
-const calculateSurfaceAreaOfCuboid = ([l, w, h]) => 2 * (area(l, w) + area(w, h) + area(l, h));
+const surfaceAreaOfCuboid = ([l, w, h]) =>
+  2 * (
+    areaOfRectangle(l, w) +
+    areaOfRectangle(w, h) +
+    areaOfRectangle(l, h)
+  );
 
 module.exports = {
-  sortAscending,
-  calculateSurfaceAreaOfCuboid,
-  calculateSmallestAreaOfCuboid
+  surfaceAreaOfCuboid,
+  areaOfSmallestFaceOfCuboid
 };
