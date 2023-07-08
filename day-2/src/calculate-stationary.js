@@ -16,23 +16,22 @@ const areaOfGiftWrapper = (dimension) => {
 const totalWrapperRequired = (giftBoxSizes) => {
   const dimensions = extractDimensions(giftBoxSizes);
 
-  return dimensions.reduce((paperRequired, dimension) => {
-    return paperRequired + areaOfGiftWrapper(dimension);
-  }, 0);
+  return dimensions.reduce((paperRequired, dimension) =>
+    paperRequired + areaOfGiftWrapper(dimension), 0);
 };
 
 const lengthOfRibbon = (dimension) => {
   const perimeterOfSmallestFace = perimeterOfSmallestFaceOfCuboid(...dimension);
   const ribbonForBow = volumeOfCuboid(...dimension);
+
   return perimeterOfSmallestFace + ribbonForBow;
 };
 
 const totalRibbonRequired = (giftBoxSizes) => {
   const dimensions = extractDimensions(giftBoxSizes);
 
-  return dimensions.reduce((totalRibbonRequired, dimension) => {
-    return totalRibbonRequired + lengthOfRibbon(dimension);
-  }, 0);
+  return dimensions.reduce((totalRibbonRequired, dimension) =>
+    totalRibbonRequired + lengthOfRibbon(dimension), 0);
 };
 
 module.exports = {
