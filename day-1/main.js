@@ -1,37 +1,24 @@
-const instructionSet = {
-  '(': 1,
-  ')': -1
-}
+const fs = require('fs');
+const { Controller } = require("./src/controller");
+const { Santa } = require("./src/santa");
 
-const finalFloorNumber = (instructions) => {
-  return instructions.reduce((currentFloor, instruction) => {
-    return currentFloor + instructionSet[instruction];
-  }, 0);
-}
-
-const findFirstBasementEntry = (instructions) => {
-  let currentFloor = 0;
-  let index = 0;
-  while (currentFloor !== -1) {
-    const instruction = instructions[index];
-    currentFloor += instructionSet[instruction];
-    index++;
-    
-    if (index > instructions.length) {
-      return -1;
-    } 
-  }
-
-  return index;
+const getInstructions = () => {
+  return fs.readFileSync('./resources/sample-file-1.txt', 'utf-8');
 }
 
 const main = function () {
-  const puzzle = '(((((((((((((((((((((((((()))))';
-  const instructions = puzzle.split('');
-  const deliveryFloorNumber = finalFloorNumber(instructions);
-  const firstBasementEntry = findFirstBasementEntry(instructions);
+  const instructions = getInstructions();
+  const initialFloor = 0;
 
-  console.log(deliveryFloorNumber, firstBasementEntry);
+  const santa = new Santa(initialFloor);
+  const santaController = new Controller(santa);
+
+  santaController.run(instructions);
+  const finalPosition = santaController.getFinalPosition();
+  const firstBasementPosition = santaController.getPositionOfSantaEnterBasement();
+
+  console.log('Final position of Santa : ', finalPosition);
+  console.log('The position of the character that causes Santa to first enter the basement is : ', firstBasementPosition);
 }
 
 main();
