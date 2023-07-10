@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
-const { Worker } = require('../src/santa');
+const { Worker } = require('../src/worker');
 
 describe('santa', () => {
   it('should deliver present to the North of the starting house', () => {

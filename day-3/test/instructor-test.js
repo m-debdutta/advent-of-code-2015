@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
-const { Worker } = require('../src/santa');
+const { Worker } = require('../src/worker');
 const { Instructor } = require('../src/instructor');
 
 describe('Instructor', () => {
