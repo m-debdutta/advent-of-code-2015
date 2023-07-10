@@ -1,28 +1,39 @@
 class Instructor {
-  #santa;
+  #workers;
   #visitedHouses;
-  #instructionSet;
+  #currentWorker;
 
-  constructor(santa) {
-    this.#santa = santa;
+  constructor([...workers]) {
+    this.#workers = workers;
+    this.#currentWorker = this.#workers[0];
     this.#visitedHouses = new Set();
     this.#updateVisitedHouses();
-    this.#instructionSet = {
-      '^': () => this.#santa.moveNorth(),
-      'v': () => this.#santa.moveSouth(),
-      '>': () => this.#santa.moveEast(),
-      '<': () => this.#santa.moveWest()
-    }
+  }
+  
+  #moveTo(direction) {
+    const directionSet = {
+      '^': () => this.#currentWorker.moveNorth(),
+      'v': () => this.#currentWorker.moveSouth(),
+      '>': () => this.#currentWorker.moveEast(),
+      '<': () => this.#currentWorker.moveWest()
+    };
+    
+    directionSet[direction]();
   }
 
   #updateVisitedHouses() {
-    const currentHouse = this.#santa.getCurrentLocation();
+    const currentHouse = this.#currentWorker.currentLocation;
     this.#visitedHouses.add(JSON.stringify(currentHouse));
   }
+  
+  #getCurrentWorker(index) {
+    return this.#workers[index % this.#workers.length];
+  }
 
-  direct(instructions) {
-    [...instructions].forEach((instruction) => {
-      this.#instructionSet[instruction]();
+  direct(directions) {
+    [...directions].forEach((direction, index) => {
+      this.#currentWorker = this.#getCurrentWorker(index);
+      this.#moveTo(direction);
       this.#updateVisitedHouses();
     });
   }

@@ -1,7 +1,7 @@
-class Santa {
+class Worker {
   #currentLocation;
 
-  constructor(startingLocation) {
+  constructor({...startingLocation}) {
     this.#currentLocation = startingLocation;
   }
 
@@ -26,9 +26,9 @@ class Santa {
     this.#updateCurrentLocation(-1, 0);
   }
 
-  getCurrentLocation() {
+  get currentLocation() {
     return { ...this.#currentLocation };
   }
 }
 
-exports.Santa = Santa;
+exports.Worker = Worker;
