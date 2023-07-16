@@ -11,4 +11,15 @@ describe('Light', () => {
       assert.strictEqual(light.state, false);
     });
   });
+
+  describe('turnOn', () => {
+    it('should turn the light on, when the light was off', () => {
+      const light = new Light();
+
+      light.turnOn();
+      const lightStatus = light.state;
+
+      assert.strictEqual(lightStatus, true);
+    });
+  });
 });
