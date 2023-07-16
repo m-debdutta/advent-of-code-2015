@@ -9,6 +9,10 @@ class Light {
     this.#state = true;
   }
 
+  turnOff(){
+    this.#state = false;
+  }
+
   get state() {
     return this.#state;
   }

@@ -30,4 +30,23 @@ describe('Light', () => {
       assert.strictEqual(light.state, true);
     });
   });
+
+  describe('turnOff', () => {
+    it('should not change the state of the light, when it is already off', () => {
+      const light = new Light();
+
+      light.turnOff();
+
+      assert.strictEqual(light.state, false);
+    });
+
+    it('should turn the light off, when the light is already turned on', () => {
+      const light = new Light();
+
+      light.turnOn();
+      light.turnOff();
+
+      assert.strictEqual(light.state, false);
+    });
+  });
 });

@@ -136,13 +136,13 @@ const { onLightCount, offLightCount } = lightController.status;
 - [x] Write test for `light.state` class.
 - [x] write corresponding code for the test.
 - [x] Git commit.
-- [ ] add more test if needed and commit.
-- [ ] write test for `light.turnOn()`.
-- [ ] write corresponding code to pass the test.
-- [ ] git commit.
-- [ ] add more test if needed and commit.
-- [ ] write test for `light.turnOff()`.
-- [ ] write corresponding code to pass the test.
+- [x] add more test if needed and commit.
+- [x] write test for `light.turnOn()`.
+- [x] write corresponding code to pass the test.
+- [x] git commit.
+- [x] add more test if needed and commit.
+- [x] write test for `light.turnOff()`.
+- [x] write corresponding code to pass the test.
 - [ ] git commit.
 - [ ] write test for `light.toggle()`.
 - [ ] write corresponding code to pass those test.
