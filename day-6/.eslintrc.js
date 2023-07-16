@@ -16,7 +16,7 @@ module.exports = {
     "camelcase": ["error"],
     "max-params": ["error", 3],
     "no-trailing-spaces": ["error"],
-    "max-lines-per-function": ["error", { "max": 10, "skipBlankLines": true }],
+    "max-lines-per-function": ["warn", { "max": 10, "skipBlankLines": true }],
     "array-callback-return": ["error", { "checkForEach": true }],
     "prefer-const": ["error"],
   }

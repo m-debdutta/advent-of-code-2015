@@ -17,9 +17,17 @@ describe('Light', () => {
       const light = new Light();
 
       light.turnOn();
-      const lightStatus = light.state;
 
-      assert.strictEqual(lightStatus, true);
+      assert.strictEqual(light.state, true);
+    });
+
+    it('should not change the state of the light, when light is already turned on', () => {
+      const light = new Light();
+
+      light.turnOn();
+      light.turnOn();
+
+      assert.strictEqual(light.state, true);
     });
   });
 });
