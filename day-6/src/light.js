@@ -13,6 +13,10 @@ class Light {
     this.#state = false;
   }
 
+  toggle(){
+    this.#state = !this.#state;
+  }
+
   get state() {
     return this.#state;
   }

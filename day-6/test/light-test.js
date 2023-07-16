@@ -49,4 +49,23 @@ describe('Light', () => {
       assert.strictEqual(light.state, false);
     });
   });
+
+  describe('toggle', () => {
+    it('should turn the light on, when the light is off', () => {
+      const light = new Light();
+
+      light.toggle();
+
+      assert.strictEqual(light.state, true);
+    });
+
+    it('should turn the light off, when the light is on', () => {
+      const light = new Light();
+
+      light.turnOn();
+      light.toggle();
+
+      assert.strictEqual(light.state, false);
+    });
+  });
 });
