@@ -125,12 +125,13 @@ lightController.status;
 ### Pseudo main :
 
 ```js
-const grid = new Array(1000).fill("").map((a) => new Array(1000).fill(""));
-const lights = grid.map((line) => line.map(() => new Light()));
+const grid = createGrid();
+const lights = fillGridWithLight();
 const lightController = new lightController(lights);
 lightController.instruct(instructions);
 const { onLightCount, offLightCount } = lightController.status;
 ```
+
 #TODO
 
 - [x] Write test for `light.state` class.
@@ -146,6 +147,6 @@ const { onLightCount, offLightCount } = lightController.status;
 - [x] git commit.
 - [x] write test for `light.toggle()`.
 - [x] write corresponding code to pass those test.
-- [ ] git commit.
-- [ ] write more test.
-- [ ] git commit.
+- [x] git commit.
+- [x] write more test.
+- [x] git commit.

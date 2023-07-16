@@ -5,7 +5,7 @@ const { Light } = require('../src/light');
 
 describe('Light', () => {
   describe('state', () => {
-    it('should be off, when light is not operated', () => {
+    it('should be off, initially', () => {
       const light = new Light();
 
       assert.strictEqual(light.state, false);
@@ -13,7 +13,7 @@ describe('Light', () => {
   });
 
   describe('turnOn', () => {
-    it('should turn the light on, when the light was off', () => {
+    it('should lit the light, when it is off', () => {
       const light = new Light();
 
       light.turnOn();
@@ -21,7 +21,7 @@ describe('Light', () => {
       assert.strictEqual(light.state, true);
     });
 
-    it('should not change the state of the light, when light is already turned on', () => {
+    it('should not change the state of the light, when it is lit', () => {
       const light = new Light();
 
       light.turnOn();
@@ -32,7 +32,7 @@ describe('Light', () => {
   });
 
   describe('turnOff', () => {
-    it('should not change the state of the light, when it is already off', () => {
+    it('should not change the state of the light, when it is off', () => {
       const light = new Light();
 
       light.turnOff();
@@ -40,7 +40,7 @@ describe('Light', () => {
       assert.strictEqual(light.state, false);
     });
 
-    it('should turn the light off, when the light is already turned on', () => {
+    it('should turn the light off, when it is lit', () => {
       const light = new Light();
 
       light.turnOn();
@@ -51,7 +51,7 @@ describe('Light', () => {
   });
 
   describe('toggle', () => {
-    it('should turn the light on, when the light is off', () => {
+    it('should turn the light on, when it is off', () => {
       const light = new Light();
 
       light.toggle();
@@ -59,7 +59,7 @@ describe('Light', () => {
       assert.strictEqual(light.state, true);
     });
 
-    it('should turn the light off, when the light is on', () => {
+    it('should turn the light off, when it is lit', () => {
       const light = new Light();
 
       light.turnOn();
