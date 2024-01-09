@@ -67,5 +67,5 @@ describe('Light', () => {
 
       assert.strictEqual(light.state, false);
     });
-  });
+  });z
 });
